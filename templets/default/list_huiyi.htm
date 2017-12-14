@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{dede:field.title/}_{dede:global.cfg_webname/}</title>
+<meta name="keywords" content="{dede:field name='keywords'/}" />
+<meta name="description" content="{dede:field name='description' function='html2text(@me)'/}" />
+<link rel="shortcut icon" href="/templates/ggICO.ico" />
+<link rel="stylesheet" href="/templates/web/style/public.css" />
+<link rel="stylesheet" href="/templates/web/style/style.css" />
+<link rel="stylesheet" href="/templates/web/js/gallerria/themes/classic/galleria.classic.css"/>
+<script src="/templates/web/js/jquery.js"></script>
+<script src="/templates/web/js/MSClass.js"></script>
+<script src="/templates/web/js/public.js"></script>
+<script src="/templates/web/lytebox/lytebox.js"></script>
+<script src="/templates/web/js/My97DatePicker/WdatePicker.js"></script>
+<script src="/templates/web/js/gallerria/galleria.js"></script>
+<script>
+    /**
+     * ajax 验证
+     */
+    function ajax4form(form_id,t){
+        (function($){
+            if (form_id!=''){
+                var D = $('#'+form_id).serialize();
+                var S = $('#'+form_id+' input[type=submit]').val();
+                $('#'+form_id+' input[type=submit],button').val('处理中...').attr('disabled',true);
+            }
+            $.ajax({
+                type:'post',
+                url:'/ajax.php',
+                data:'t='+t+'&'+D,
+                dataType:'json',
+                success:function(R){
+                    $('#'+form_id+' input[type=submit],button').val(S).attr('disabled',false);         
+                    if (R.erro!=0){
+                        alert(R.msg);
+                        $('#'+form_id+' input[name='+R.name+'],#'+form_id+' textarea[name='+R.name+']').focus().select();
+                        if(R.erro == 'yanzhengma'){
+                            $('#yanzhengma').click();
+                        }
+                    }else{
+                        if (R.alert != '' && R.alert != undefined){
+                            alert(R.alert);
+                        }
+                        if (R.sourse != '' && R.sourse != undefined){
+                            eval(R.sourse);
+                        }
+                        $('#'+form_id+' input[rel*=clear],#'+form_id+' textarea[rel*=clear]').val('');
+                        if (R.complete!='' && R.complete != undefined){
+                            eval(R.complete);
+                        }
+                        if (R.url!='' && R.url != undefined){
+                            window.location.href=R.url;
+                        }
+                    }
+                    if (R.createSendMailXmlFileName != '' && R.createSendMailXmlFileName != undefined){
+                        var mailOptin = {
+                            'debug':0,
+                            'goUrl':R.goUrl,
+                            'createSendMailXmlFileName':R.createSendMailXmlFileName,
+                            'complete':R.mailComplete
+                        };
+                        getMailHandle(mailOptin);
+                    }
+                }
+            })
+           
+        })(jQuery)
+    }
+</script>
+</head>
+<body class="body5">
+{dede:include filename="head.htm"/}
+<div id="yezhu" style="display:none;"> </div>
+<div class="yezhu-box" id="yezhu-box" style="display:none;">
+  <div class="yezhuanniu c"> <a class="fr" href="javascript:void(0)"> <img src="/templates/web/images/bo1.png"/></a></div>
+  <form action = "javascript:ajax4form('formname','owner')" method = "post" id = "formname">
+    <div class="yezhu-top"> <span>业主登录</span><span class="you">Owners Login</span>
+      <div>
+        <input name="name" type="text" class="wb" value="账户" >
+      </div>
+      <div>
+        <input name="password" type="password" class="wb" value="密码">
+      </div>
+    </div>
+    <!--fabiao-top end-->
+    <div class="yezhu-con"> <span class="t1"><a href="#">忘记密码？</a></span> <span>
+      <input name="登录" type="submit" class="dl" value="登录">
+      </span> </div>
+    <!--fabiao-con end-->
+  </form>
+</div>
+<!--fabiao-box end-->
+<div class="wrapper">
+  <div class="main">
+    <div class="location fr">当前位置：{dede:field name='position'/}</div>
+    <!--location end-->
+    <br style="clear:both">
+    <div class="main-top c">
+      <div class="main-title fl">
+        <div class="li1">PROFESSIONAL MEETING</div>
+        <div class="li2">专业会议</div>
+      </div>
+      <!--main-title end-->
+      <div class="main-nav fl"> {dede:channel type='son' currentstyle="
+       <a href='~typelink~' class='on'>~typename~</a>  "}
+     <a href='[field:typeurl/]'>[field:typename/]</a> 
+	    {/dede:channel}</div>
+    </div>
+    <!--main-top end-->
+    <ul class="room c mt5">
+	 {dede:list pagesize='6' channelid='20' addfields='hdsj'} 
+      <li>
+        <div class="room-pic fl"><a href="[field:arcurl/]"><img src="[field:litpic/]" width="225" height="118"></a></div>
+        <div class="room-left fl" style="width:470px;">
+          <div class="news-title"><a href="[field:arcurl/]">[field:title/]</a></div>
+          <div class="ubb pb14 pt12"></div>
+          <div class="area">面积：<span>[field:ycsj/]㎡</span></div>
+          <!--                                    <div class="booking-but mt25"><a href="booking_meeting.php">立即预订</a></div>-->
+        </div>
+        <!--room-left end-->
+      </li>
+       {/dede:list}
+    </ul>
+    <!--special end-->
+    <div class="page tr"> <style type="text/css">
+.dede_pages{}.dede_pages ul{ float:left; padding:12px 0px 12px 16px;}.dede_pages ul li{ float:left; font-family:Tahoma; line-height:17px; margin-right:6px; border:1px solid #E9E9E9;list-style-type:none; }.dede_pages ul li a{ float:left; padding:2px 4px 2px; color:#555; display:block; ;list-style-type:none; }.dede_pages ul li a:hover{ color:#690; text-decoration:none; padding:2px 4px 2px;}.dede_pages ul li.thisclass,.dede_pages ul li.thisclass a,.pagebox ul li.thisclass a:hover{ background-color:#F8F8F8; padding:2px 4px 2px; font-weight:bold;}.dede_pages .pageinfo{ line-height:21px; padding:12px 10px 12px 16px; color:#999;}.dede_pages .pageinfo strong{ color:#555; font-weight:normal;}
+</style>
+              <div class=dede_pages> <ul>{dede:pagelist listitem="info,index,end,pre,next,pageno,option" listsize="5"/}</ul></div></div>
+    <!--page end-->
+  </div>
+  <!--main end-->
+  <div class="main-yy"></div>
+  <div class="main-bottom"></div>
+  {dede:include filename="footer2.htm"/}
+  <!--fudong end-->
+</div>
+<!--wrapper end-->
+</body>
+</html>

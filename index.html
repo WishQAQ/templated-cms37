@@ -1,0 +1,379 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>度假景区酒店预定类企业织梦模板</title>
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="shortcut icon" href="templates/ggICO.ico" />
+<link rel="stylesheet" href="/templates/web/style/public.css" />
+<link rel="stylesheet" href="/templates/web/style/index.css" />
+<script src="/templates/web/js/jquery.js"></script>
+<script src="/templates/web/js/MSClass.js"></script>
+<script src="/templates/web/js/public.js"></script>
+<script src="/templates/web/lytebox/lytebox.js"></script>
+<script src="/templates/web/js/My97DatePicker/WdatePicker.js"></script>
+<script src="/templates/web/js/gallerria/galleria.js"></script>
+<script>
+    /**
+     * ajax 验证
+     */
+    function ajax4form(form_id,t){
+        (function($){
+            if (form_id!=''){
+                var D = $('#'+form_id).serialize();
+                var S = $('#'+form_id+' input[type=submit]').val();
+                $('#'+form_id+' input[type=submit],button').val('处理中...').attr('disabled',true);
+            }
+            $.ajax({
+                type:'post',
+                url:'/ajax.php',
+                data:'t='+t+'&'+D,
+                dataType:'json',
+                success:function(R){
+                    $('#'+form_id+' input[type=submit],button').val(S).attr('disabled',false);         
+                    if (R.erro!=0){
+                        alert(R.msg);
+                        $('#'+form_id+' input[name='+R.name+'],#'+form_id+' textarea[name='+R.name+']').focus().select();
+                        if(R.erro == 'yanzhengma'){
+                            $('#yanzhengma').click();
+                        }
+                    }else{
+                        if (R.alert != '' && R.alert != undefined){
+                            alert(R.alert);
+                        }
+                        if (R.sourse != '' && R.sourse != undefined){
+                            eval(R.sourse);
+                        }
+                        $('#'+form_id+' input[rel*=clear],#'+form_id+' textarea[rel*=clear]').val('');
+                        if (R.complete!='' && R.complete != undefined){
+                            eval(R.complete);
+                        }
+                        if (R.url!='' && R.url != undefined){
+                            window.location.href=R.url;
+                        }
+                    }
+                    if (R.createSendMailXmlFileName != '' && R.createSendMailXmlFileName != undefined){
+                        var mailOptin = {
+                            'debug':0,
+                            'goUrl':R.goUrl,
+                            'createSendMailXmlFileName':R.createSendMailXmlFileName,
+                            'complete':R.mailComplete
+                        };
+                        getMailHandle(mailOptin);
+                    }
+                }
+            })
+           
+        })(jQuery)
+    }
+</script>
+<script>
+
+function check_booking_submit() {
+
+		var s = $("#startdate").val();
+
+		var e = $("#enddate").val();
+		var id = $("#id").val();
+
+		if (s == "" || s == "入住日期") {
+
+		    alert("请选择入住日期！");
+
+		    return false;
+
+		} else if (e == "" || e == "离店日期") {
+
+		    alert("请选择离店日期！");
+
+		    return false;
+
+		}
+		else if (id == "" || e == "0") {
+
+		    alert("请选择房间类型！");
+
+		    return false;
+
+		}
+
+}
+
+</script>
+<style>
+.select {
+	border: 1px solid #0893D3;
+	color: #787878;
+	height: 23px;
+	width:230px;
+	position:relative;
+}
+.select p a {
+	display:block;
+	padding-left:3px;
+	cursor: pointer;
+	height:23px;
+	overflow:hidden;
+	line-height:23px;
+	color:#787878;
+	background:url(templates/web/images/bg1-1.jpg) right no-repeat;
+}
+.select p a font {
+	margin-right:10px;
+}
+.select p a:hover {
+	text-decoration:none;
+}
+.select ul {
+	display:none;
+	border:1px solid #BFCAD5;
+	position:absolute;
+	bottom:23px;
+	left:-1px;
+	z-index:10;
+	overflow:auto;
+	background:#fff;
+	overflow:hidden;
+}
+.select li {
+	float:left;
+	width:100%;
+}
+.select li a {
+	display:block;
+	float:left;
+	padding-left:9px;
+	line-height:25px;
+	text-decoration:none;
+	color: #787878;
+	width:221px;
+}
+.select li:hover {
+	background:#EEEEEE;
+}
+</style>
+</head>
+<body>
+<div class="top c">
+  <div class="logo fl logo1"><img src="/templates/web/images/logo.png"></div>
+  <div class="top-bar fr top-bar1"> 
+    <!--    <div class="top-bar-li1 fr">
+
+      <p><a>语言</a></p>
+
+      <ul class="c">
+
+        <li><a href="changeLanguage.php?language=zh">中文</a></li>
+
+        <li><a href="changeLanguage.php?language=en">English</a></li>
+
+      </ul>
+
+    </div>-->
+    <div class="top-bar-li2 fr"> <a href="/plus/list.php?tid=27">帮助</a><a href="/plus/booking_room_con0.php">在线预订</a><a href="/plus/booking_search.php">订单查询</a></div>
+  </div>
+  <!--top-bar end--> 
+  <br class="cb">
+  <div class="about" style="padding:138px 0 0 718px;"><a href="about.php"></a></div>
+</div>
+<div class="wrapper">
+  <ul class="nav fl c">
+    
+    <li><a href='/jinqitehui/'  > 近期特惠</a></li>
+    
+    <li><a href='/shushikefang/'  > 舒适客房</a></li>
+    
+    <li><a href='/jingzhicanyin/'  > 精致餐饮</a></li>
+    
+    <li><a href='/zhuanyehuiyi/'  > 专业会议</a></li>
+    
+    <li><a href='/hanSPA/'  > 涵SPA</a></li>
+    
+    <li><a href='/yulexiuxian/'  > 娱乐休闲</a></li>
+    
+    <li><a href='/jiudianxiangguan/'  > 酒店相关</a></li>
+    
+  </ul>
+  <br style="clear:both">
+  <div class="tuku pl6 pt12"><a href="/plus/list.php?tid=13"><img src="/templates/web/images/tuku.png"></a></div>
+</div>
+<!--wrapper end-->
+<div class="main-box" id="main-box">
+  <div class="main">
+    <div class="shousuo shousuo2"><a href="javascript:void(0)"></a></div>
+    <div class="main-wrapper c" id="main-wrapper">
+      <form class="booking fl" method="get" action="plus/booking_room_con.php" onSubmit="return check_booking_submit()">
+        <input type="hidden" name="op" value="list" />
+        <div class="booking-top c">
+          <div class="li1 fl">快速订房</div>
+          <div class="li2 fr">预订热线：<img src="templates/web/images/dianhua.png"></div>
+        </div>
+        <!--booking-top end-->
+        <div class="c">
+          <input type="text" class="input1 mt14 fl" id="startdate" name="start_date"  value="2017-12-14" onFocus="WdatePicker({onpicked: function() {enddate.focus();}, minDate: '%y-%M-#{%d+1}', maxDate: '%y-#{%M+5}-%d', readOnly: true, isShowClear: false, doubleCalendar:true})">
+          <input type="text" class="input1 fl mt14 ml10" id="enddate" name="end_date" value="2017-12-15" onFocus="WdatePicker({onpicked: function() {}, minDate: '#F{$dp.$D(\'startdate\',{d:1})}', maxDate: '%y-#{%M+5}-%d', readOnly: true, isShowClear: false, doubleCalendar:true})">
+          <input type="submit" class="submit1 mt12 ml12" value="预订">
+        </div>
+        <div class="c pt4">
+          <select class="select1 fl" name="roomnum">
+            <option value="">房数</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+          </select>
+          <div class="fl ml10">
+            <div class="select">
+              <p><a href="javascript:void(0);">房间类型</a></p>
+              <ul>
+                <li><a href="javascript:;" data-value="">房间类型</a></li>
+                <li><a href="javascript:;" title="至尊海景套房（二室一厅" data-value="1">至尊海景套房（二室一厅<font style="float:right; color:#ee782f">&yen;122&nbsp;&nbsp;</font></a></li>
+<li><a href="javascript:;" title="休闲套房（二室一厅）" data-value="2">休闲套房（二室一厅）<font style="float:right; color:#ee782f">&yen;115&nbsp;&nbsp;</font></a></li>
+
+              </ul>
+              <input type="hidden" name="id" value="" id="id">
+            </div>
+            <!--select end--> 
+          </div>
+        </div>
+        <script>formSelect();</script>
+      </form>
+      <!--booking end-->
+      <div class="login fl">
+        <div class="login-top">会员 </div>
+        <div class="login-con c">
+          <div class="li1 pb14">国光会会员可享受各种不同的全年优惠，获得终身难忘的旅行体验。</div>
+          <!--<div class="li2 fl"><a href="booking_member.php">国光会员登录</a></div>-->
+          <div class="li3 fr"><a href="#">更多信息</a></div>
+        </div>
+        <!--login-con end--> 
+      </div>
+      <!--login end-->
+      <div class="preferential fl">
+        <div class="preferential-top mb10">最新优惠</div>
+        <div class="news" style="position:relative;">
+          <div id="news-list" class="news-list">
+            <ul id="news-ul" class="c">
+              <li class="c">
+                <div class="preferential-left fl"><a href="/jinqitehui/2015/0207/3.html" target="_blank"><img src="/uplods/pic/178347254277.jpg" width="125" height="95"></a></div>
+                <div class="preferential-right fl">
+                  <div class="li1"><a href="/jinqitehui/2015/0207/3.html" target="_blank">黎苗风情海鲜烧烤盛宴</a></div>
+                </div>
+                <!--preferential-right end--> 
+              </li>
+<li class="c">
+                <div class="preferential-left fl"><a href="/jinqitehui/2015/0207/4.html" target="_blank"><img src="/uplods/pic/165099347928.jpg" width="125" height="95"></a></div>
+                <div class="preferential-right fl">
+                  <div class="li1"><a href="/jinqitehui/2015/0207/4.html" target="_blank">带爸爸去旅行（3天2晚、</a></div>
+                </div>
+                <!--preferential-right end--> 
+              </li>
+<li class="c">
+                <div class="preferential-left fl"><a href="/jinqitehui/2015/0207/5.html" target="_blank"><img src="/uplods/pic/171384341566.jpg" width="125" height="95"></a></div>
+                <div class="preferential-right fl">
+                  <div class="li1"><a href="/jinqitehui/2015/0207/5.html" target="_blank">爱享豪生套餐（3天2晚/4天</a></div>
+                </div>
+                <!--preferential-right end--> 
+              </li>
+
+            </ul>
+            <!--news-ul--> 
+          </div>
+          <!--news-list end-->
+          <ul class="news-page c" style="position:absolute; top:77px; left:263px;">
+            <li class="next"><a id="next" href="javascript:void(0);"><br>
+              </a></li>
+            <li class="pre"><a id="pre" class="over" href="javascript:void(0);"><br>
+              </a></li>
+          </ul>
+          <script>content_slide('news-list', 'news-ul', 'pre', 'next', 291, 95);</script> 
+        </div>
+        <!--news end--> 
+      </div>
+      <!--preferential end--> 
+    </div>
+    <!--main-wrapper end--> 
+  </div>
+  <!--main end--> 
+</div>
+<!--main-box end--> 
+ 
+
+
+<div class="footer-box">
+  <div class="footer tc">
+    <div class="footer-nav"> 
+	
+	 <a href='/guanyujiudian/'>关于酒店</a>| <a href='/xinwendongtai/'>新闻动态</a>| <a href='/tupian_shipin/'>图片&视频</a>| <a href='/lianxiwomen/'>联系我们</a>| <a href='/wangzhanditu/'>网站地图</a>| <a href='/youqinglianjie/'>友情链接</a>| <a href='/yulexiuxian/yinsishengming/'>隐私声明</a>|
+	  <a href="http://www.weibo.com" target="_blank"> <img src="/templates/web/images/weibo.jpg">酒店官方微博 </a>| <a id="QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=888888&site=qq&menu=yes"> <img border="0" src="http://wpa.qq.com/pa?p=2:888888:45" alt="QQ留言" title="9:00-18:00"> &nbsp;在线沟通<span class="work_time">9:00-18:00</span> </a> </div>
+    <script>QQ();</script>
+    <div class="footer-bq pt5">备案号设置 </div>
+    <div class="footer-bq2">织梦科技度假酒店官方网站 版权所有</div>
+    <div class="pt3" style="font-family:Tahoma; color:#808080;">  <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow" style="margin-left:10px; color:#999">备案号设置</a> <a href="http://aic.hainan.gov.cn:6000/lz.aspx?c=10477&q=460200000017998" target="_blank"><img src="/images/ico/lz_ico.jpg" /></a></div>
+  </div>
+  <!--footer end-->
+</div> 
+<!--footer-box end-->
+<div id="yezhu" style="display:none;"> </div>
+<div class="yezhu-box" id="yezhu-box" style="display:none;">
+  <div class="yezhuanniu c"> <a class="fr" href="javascript:void(0)"> <img src="templates/web/images/bo1.png"/></a></div>
+  <form action = "javascript:ajax4form('formname','owner')" method = "post" id = "formname">
+    <div class="yezhu-top"> <span>业主登录</span><span class="you">Owners Login</span>
+      <div>
+        <input name="name" type="text" class="wb" value="账户" >
+      </div>
+      <div>
+        <input name="password" type="password" class="wb" value="密码">
+      </div>
+    </div>
+    <!--fabiao-top end-->
+    <div class="yezhu-con"> <span class="t1"><a href="#">忘记密码？</a></span> <span>
+      <input name="登录" type="submit" class="dl" value="登录">
+      </span> </div>
+    <!--fabiao-con end-->
+  </form>
+</div>
+<!--fabiao-box end--> 
+<!--声明开始
+<div class="shengming_opened">
+  <div class="btn_shengming_close"><br>
+  </div>
+</div>--> 
+<!--shengming_opened end-->
+<div class="shengming_closed"></div>
+<!--shengming_closed end--> 
+<script>
+$(function(){
+	var $win = $(window);
+	var winWidth = $win.width();
+	//var winHeight = $win.height();
+	var $opened = $('.shengming_opened');
+	var $closed = $('.shengming_closed');
+	//$opened.css('top', (winHeight-560)/2);
+	//$closed.css('top', (winHeight-127)/2);
+	if(winWidth<1440){
+		$opened.css('right', 0);
+		$closed.css('right', 0);
+	}else{
+		$opened.css('right', (winWidth-1440)/2);
+		$closed.css('right', (winWidth-1440)/2);
+	}
+	
+	$('.btn_shengming_close').click(function(){
+		$opened.hide();
+		$closed.show();
+	});
+	$closed.click(function(){
+		$opened.show();
+		$closed.hide();
+	});
+});
+</script> 
+<!--声明结束-->
+</body>
+</html>

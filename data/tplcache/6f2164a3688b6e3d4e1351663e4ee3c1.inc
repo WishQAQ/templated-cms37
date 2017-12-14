@@ -1,0 +1,1 @@
+<li><a href="javascript:;" title="[field:title/]" data-value="[field:id/]">[field:title/]<font style="float:right; color:#ee782f">&yen;[field:price/]&nbsp;&nbsp;</font></a></li>

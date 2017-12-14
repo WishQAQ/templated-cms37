@@ -1,0 +1,7 @@
+INSERT INTO `dede_addonarticle` VALUES('7','27','旅游指南旅游指南旅游指南旅游指南','','','127.0.0.1');
+INSERT INTO `dede_addonarticle` VALUES('11','11','<a href=\"catalog_do.php?cid=11&amp;dopost=listArchives\">新闻动态[ID:11]</a>(文档：0) <a href=\"javascript:;\" onclick=\"AlertMsg(\'快捷编辑窗口\',\'11\');\"><img src=\"images/write2.gif\" /></a>','','','127.0.0.1');
+INSERT INTO `dede_addonarticle` VALUES('12','11','<a href=\"catalog_do.php?cid=11&amp;dopost=listArchives\">新闻动态[ID:11]</a>(文档：0) <a href=\"javascript:;\" onclick=\"AlertMsg(\'快捷编辑窗口\',\'11\');\"><img src=\"images/write2.gif\" /></a>','','','127.0.0.1');
+INSERT INTO `dede_addonarticle` VALUES('13','11','图片新闻图片新闻图片新闻','','','127.0.0.1');
+INSERT INTO `dede_addonarticle` VALUES('14','28','/uploads/allimg/150210/1-150210213130.jpg','','','127.0.0.1');
+INSERT INTO `dede_addonarticle` VALUES('15','28','酒店美景2222酒店美景2222','','','127.0.0.1');
+INSERT INTO `dede_addonarticle` VALUES('16','29','休闲之旅','','','127.0.0.1');

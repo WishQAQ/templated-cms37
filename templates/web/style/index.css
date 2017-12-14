@@ -1,0 +1,224 @@
+
+@charset "utf-8";
+body {
+	background:url("../images/bg.jpg") center 0 no-repeat;
+}
+.top {
+	width:1370px;
+	height:194px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.wrapper {
+	margin-left:auto;
+	margin-right:auto;
+	width:920px;
+}
+.logo {
+	padding-top:23px;
+	position:absolute;
+}
+.top-bar {
+	padding-top:20px;
+	position:absolute;
+}
+.nav {
+	padding:0 10px 0 25px;
+	height:24px;
+	line-height:24px;
+	background:#1ea0d6;
+}
+.nav li {
+	float:left;
+	display:inline;
+	padding-right:24px;
+}
+.nav li a {
+	color:#FFF;
+}
+.main-box {
+	margin-top:293px;
+	background:#FFF;
+}
+.main {
+	position:relative;
+	width:920px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.shousuo {
+	position:absolute;
+	left:0;
+	top:-24px;
+}
+.shousuo a {
+	display:inline-block;
+	width:83px;
+	height:24px;
+	background:url("../images/icon.png") 0 -134px no-repeat
+}
+.shousuo2 a {
+	background-position: 0 -164px;
+}
+.main-wrapper {
+	/*overflow:hidden;*/
+}
+.booking {
+	width:381px;
+	height:156px;
+	padding-left:6px;
+	/*overflow:hidden;*/
+	border-right:1px solid #ced1d3;
+}
+.booking-top {
+	height:43px;
+	border-bottom:1px solid #ced1d3;
+}
+.booking-top .li1 {
+	padding-top:13px;
+	font-size:17px;
+	color:#060606;
+}
+.booking-top .li2 {
+	color:#8b8b8b;
+	padding:18px 15px 0 0;
+}
+.login {
+	width:208px;
+	height:156px;
+	overflow:hidden;
+	border-right:1px solid #ced1d3;
+}
+.login-top {
+	height:29px;
+	font-size:17px;
+	padding:14px 0 0 22px;
+	color:#232423;
+	border-bottom:1px solid #ced1d3;
+	background:url("../images/dltop.gif") 0 0 no-repeat;
+}
+.login-con {
+	width:158px;
+	padding:11px 0 0 22px;
+}
+.login-con .li1 {
+	color:#787878;
+	line-height:18px;
+}
+.login-con .li2 a {
+	color:#1a7094;
+	padding-left:15px;
+	text-decoration:underline;
+	background:url("../images/icon.gif") 0 -68px no-repeat;
+}
+.login-con .li3 a {
+	text-decoration:underline;
+	color:#787878;
+}
+.preferential {
+	width:322px;
+	height:156px;
+	overflow:hidden;
+}
+.preferential-top {
+	height:29px;
+	font-size:17px;
+	padding:14px 0 0 38px;
+	color:#232423;
+	border-bottom:1px solid #ced1d3;
+	background:url("../images/icon.gif") 0 -97px no-repeat;
+}
+.preferential-left {
+	padding-left:17px;
+}
+.preferential-right {
+	width:147px;
+	padding-right:19px;
+}
+.preferential-right .li1 a {
+	color:#1a7094;
+}
+.preferential-right .li2 {
+	color:#aeaeae;
+	line-height:18px;
+}
+.preferential-right .li3 {
+	margin-top:-10px;
+}
+.preferential-right .li3 a {
+	text-decoration:underline;
+	color:#787878;
+}
+.about{
+	padding:68px 0 0 801px;}
+.about a{
+	display:inline-block;
+	width:122px;
+	height:20px;}
+.about a:focus{-moz-outline-style:none; outline:none;}
+
+
+/*============2013-01-29修改==================*/
+.news{
+	margin-left:17px;}
+.preferential-left{
+	padding:0;}
+.preferential-right{
+	padding-right:0;
+	padding-left:19px;
+	font-size:16px;}
+.preferential-right .li1{
+	padding-top:20px;}
+.news-page li {
+    display: inline;
+    float: right;
+    height: 15px;
+    margin-left: 5px;
+    overflow: hidden;
+    width: 15px;
+}
+.news-page a {
+    background:url("../images/0129icon1.gif") 0 0 no-repeat;
+    display: block;
+    height: 15px;
+}
+.news-page .next a {
+    background-position:-20px 0;
+}
+.news-page .pre .over {
+    background-position:0 -20px;
+}
+.news-page .next .over {
+    background-position:-20px -20px;
+}
+
+/*-------2013-5-29--------*/
+
+.shou1{
+	overflow:hidden;}
+.footer_right{
+	padding-top:40px;}
+	
+.shengming_opened{
+	position:absolute;
+	top:20px;
+	right:0;
+	width:517px;
+	height:560px;
+	background:url("../images/shengming_opened.gif") 0 0 no-repeat;}
+.btn_shengming_close{
+	margin-top:29px;
+	margin-left:22px;
+	width:29px;
+	height:29px;
+	cursor:pointer;
+	background:url("../images/btn_shengming_close.gif") 0 0 no-repeat;}
+.shengming_closed{
+	display:none;
+	position:absolute;
+	top:174px;
+	right:0;
+	width:129px;
+	height:127px;
+	cursor:pointer;
+	background:url("../images/shengming_closed.gif") 0 0 no-repeat;}

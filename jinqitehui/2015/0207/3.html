@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>黎苗风情海鲜烧烤盛宴_度假景区酒店预定类企业织梦模板</title>
+<meta name="keywords" content="黎苗,风情,海鲜,烧烤,盛宴,黎苗,风情,海鲜," />
+<meta name="description" content="黎苗风情海鲜烧烤盛宴" />
+<link rel="shortcut icon" href="/templates/ggICO.ico" />
+<link rel="stylesheet" href="/templates/web/style/public.css" />
+<link rel="stylesheet" href="/templates/web/style/style.css" />
+<link rel="stylesheet" href="/templates/web/js/gallerria/themes/classic/galleria.classic.css"/>
+<script src="/templates/web/js/jquery.js"></script>
+<script src="/templates/web/js/MSClass.js"></script>
+<script src="/templates/web/js/public.js"></script>
+<script src="/templates/web/lytebox/lytebox.js"></script>
+<script src="/templates/web/js/My97DatePicker/WdatePicker.js"></script>
+<script src="/templates/web/js/gallerria/galleria.js"></script>
+<script>
+    /**
+     * ajax 验证
+     */
+    function ajax4form(form_id,t){
+        (function($){
+            if (form_id!=''){
+                var D = $('#'+form_id).serialize();
+                var S = $('#'+form_id+' input[type=submit]').val();
+                $('#'+form_id+' input[type=submit],button').val('处理中...').attr('disabled',true);
+            }
+            $.ajax({
+                type:'post',
+                url:'/ajax.php',
+                data:'t='+t+'&'+D,
+                dataType:'json',
+                success:function(R){
+                    $('#'+form_id+' input[type=submit],button').val(S).attr('disabled',false);         
+                    if (R.erro!=0){
+                        alert(R.msg);
+                        $('#'+form_id+' input[name='+R.name+'],#'+form_id+' textarea[name='+R.name+']').focus().select();
+                        if(R.erro == 'yanzhengma'){
+                            $('#yanzhengma').click();
+                        }
+                    }else{
+                        if (R.alert != '' && R.alert != undefined){
+                            alert(R.alert);
+                        }
+                        if (R.sourse != '' && R.sourse != undefined){
+                            eval(R.sourse);
+                        }
+                        $('#'+form_id+' input[rel*=clear],#'+form_id+' textarea[rel*=clear]').val('');
+                        if (R.complete!='' && R.complete != undefined){
+                            eval(R.complete);
+                        }
+                        if (R.url!='' && R.url != undefined){
+                            window.location.href=R.url;
+                        }
+                    }
+                    if (R.createSendMailXmlFileName != '' && R.createSendMailXmlFileName != undefined){
+                        var mailOptin = {
+                            'debug':0,
+                            'goUrl':R.goUrl,
+                            'createSendMailXmlFileName':R.createSendMailXmlFileName,
+                            'complete':R.mailComplete
+                        };
+                        getMailHandle(mailOptin);
+                    }
+                }
+            })
+           
+        })(jQuery)
+    }
+</script>
+</head>
+<body class="body1">
+<div class="top-box">
+  <div class="top c">
+    <div class="logo fl"><a href="/"><img src="/templates/web/images/logo.jpg"></a></div>
+    <ul class="nav fl c">
+      <li ><a href="/">首页</a> </li>
+	  	<li class='on'><a href='/jinqitehui/' >近期特惠</a></li>
+      	<li><a href='/shushikefang/'  >舒适客房</a></li>
+     	
+      	<li><a href='/jingzhicanyin/'  >精致餐饮</a></li>
+     	
+      	<li><a href='/zhuanyehuiyi/'  >专业会议</a></li>
+     	
+      	<li><a href='/hanSPA/'  >涵SPA</a></li>
+     	
+      	<li><a href='/yulexiuxian/'  >娱乐休闲</a></li>
+     	
+      	<li><a href='/jiudianxiangguan/'  >酒店相关</a></li>
+     	
+    </ul>
+    <div class="top-bar fr pt16">
+     <!-- <div class="top-bar-li1 fr">
+        <p><a>语言</a></p>
+        <ul class="c">
+          <li><a href="changeLanguage.php?language=zh">中文</a></li>
+          <li><a href="changeLanguage.php?language=en">English</a></li>
+        </ul>
+      </div>-->
+      <div class="top-bar-li2 fr"><a href="/plus/list.php?tid=27">帮助</a><a href="booking_room_con0.php?op=list">在线预订</a></div>
+    </div>
+    <!--top-bar end-->
+  </div>
+  <!--top end-->
+</div>
+<div id="yezhu" style="display:none;"> </div>
+<div class="yezhu-box" id="yezhu-box" style="display:none;">
+  <div class="yezhuanniu c"> <a class="fr" href="javascript:void(0)"> <img src="/templates/web/images/bo1.png"/></a></div>
+  <form action = "javascript:ajax4form('formname','owner')" method = "post" id = "formname">
+    <div class="yezhu-top"> <span>业主登录</span><span class="you">Owners Login</span>
+      <div>
+        <input name="name" type="text" class="wb" value="账户" >
+      </div>
+      <div>
+        <input name="password" type="password" class="wb" value="密码">
+      </div>
+    </div>
+    <!--fabiao-top end-->
+    <div class="yezhu-con"> <span class="t1"><a href="#">忘记密码？</a></span> <span>
+      <input name="登录" type="submit" class="dl" value="登录">
+      </span> </div>
+    <!--fabiao-con end-->
+  </form>
+</div>
+<!--fabiao-box end-->
+<div class="wrapper">
+  <div class="main">
+    <div class="location fr">当前位置：<a href='http://localhost/'>主页</a> > <a href='/jinqitehui/'>近期特惠</a> > </div>
+    <!--location end--> 
+    <br style="clear:both">
+    <div class="main-top c">
+      <div class="main-title fl">
+        <div class="li1">DISCOUNT PACKAGE</div>
+        <div class="li2">近期特惠</div>
+      </div>
+      <!--main-title end--> 
+    </div>
+    <!--main-top end-->
+    <div class="special-con">
+      <div class="special-con-top c">
+        <div class="special-con-left fl" style="width:300px;">
+          <div class="title f22">黎苗风情海鲜烧烤盛宴</div>
+          <div class="special-date">2015-01-01-2015-05-05</div>
+        </div>
+        <div class="special-con-right fr">
+          <div class="price fl pt4">套餐优惠价：<span class="a2">RMB</span><span class="a1">111元/位</span></div>
+          <!-- <div class="booking-but fl pl20"><a href="booking_package.php?id=10">立即预订</a></div>--> 
+        </div>
+      </div>
+      <!--special-con-top end-->
+      <div class="ubb pl20 pr20 pt30"> <img alt="" width="700" height="700" src="/uplods/pic/178347254277.jpg" /><br />
+        黎苗风情海鲜烧烤盛宴 </div>
+      <div class="page2 mt30">
+        <div>上一篇：没有了 </div>
+        <div>下一篇：<a href='/jinqitehui/2015/0207/4.html'>带爸爸去旅行（3天2晚、4天3晚、5天4晚）</a> </div>
+      </div>
+      <!--page end--> 
+    </div>
+    <!--special-con end--> 
+  </div>
+  <!--main end-->
+  <div class="main-yy"></div>
+  <div class="main-bottom"></div>
+  <div class="footer c">
+  <div class="footer-nav"> <a href='/guanyujiudian/'>关于酒店</a>| <a href='/xinwendongtai/'>新闻动态</a>| <a href='/tupian_shipin/'>图片&视频</a>| <a href='/lianxiwomen/'>联系我们</a>| <a href='/wangzhanditu/'>网站地图</a>| <a href='/youqinglianjie/'>友情链接</a>| <a href='/yulexiuxian/yinsishengming/'>隐私声明</a>|
+	  <a href="http://www.weibo.com" target="_blank"> <img src="/templates/web/images/weibo.jpg">酒店官方微博 </a>| <a id="QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=888888&site=qq&menu=yes"> <img border="0" src="http://wpa.qq.com/pa?p=2:888888:45" alt="QQ留言" title="9:00-18:00"> &nbsp;在线沟通<span class="work_time">9:00-18:00</span> </a></div>
+  <script>QQ();</script>
+    <div class="footer-bq pt5">备案号设置 </div>
+    <div class="footer-bq2">织梦科技度假酒店官方网站 版权所有</div>
+    <div class="pt3" style="font-family:Tahoma; color:#808080;">  <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow" style="margin-left:10px; color:#999">备案号设置</a> <a href="http://aic.hainan.gov.cn:6000/lz.aspx?c=10477&q=460200000017998" target="_blank"><img src="/images/ico/lz_ico.jpg" /></a></div>
+</div>
+
+  <div class="fudong">
+    <div class="li1"><a href="/plus/list.php?tid=2">查找客房</a></div>
+    <div class="li2"><a href="tencent://message/?uin=888888&Site=www.hsh.com&Menu=yes">在线客服</a></div>
+    <div class="li3"><a href="/plus/list.php?tid=13">图库&视频</a></div>
+  </div>
+  </div>
+<!--wrapper end-->
+</body>
+</html>
